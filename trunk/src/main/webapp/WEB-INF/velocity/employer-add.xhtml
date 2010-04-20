@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Recruiter Register</title>
+    </head>
+    <body>
+            <form id="emailform" action="" method="post" >
+            <table>
+                <tr>
+                    <td>* Username</td>
+                    <td><input type="text" name="user.UserName" id="username" maxlength="20" tabindex="1"/></td>
+                    <td>
+                      #springBind("employer.user.userName")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Password</td>
+                    <td><input type="password" name="user.Password" id="password"  value="" maxlength="20"/></td>
+                    <td>
+                      #springBind("employer.user.password")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Confirm password</td>
+                    <td><input type="password" name="password2" id="password2" value="" maxlength="20"/></td>
+                    <td>
+                      #springBind("employer.password2")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Email</td>
+                    <td><input type="text" name="user.Email" id="user.email"  value="" class="text" maxlength="100"/></td>
+                    <td>
+                      #springBind("employer.user.email")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Confirm email</td>
+                    <td><input type="text" name="email2" id="email2" value="" class="text" maxlength="100"/></td>
+                    <td>
+                      #springBind("employer.email2")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+            </table>
+                <table>
+                    <tr>
+                        <td>First name</td>
+                        <td><input maxlength=128 value="" name="firstName" class="text"/></td>
+                        <td>
+                          #springBind("employer.FirstName")
+                          #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Last name</td>
+                        <td><input maxlength=128 value="" name="lastName" class="text"/></td>
+                        <td>
+                            #springBind("employer.LastName")
+                            #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email newsletters</td>
+                        <td>
+                            <label for="emailYes"><input name="newsLetter" id="emailYes" class="radio" value="1" type="radio"/>Yes</label>
+                            <label for="emailNo"><input name="newsLetter" id="emailNo" class="radio" value="0" type="radio"/>No</label>
+                        </td>
+                        <td>
+                            #springBind("employer.NewsLetter")
+                            #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Company type</td>
+                        <td>
+                            <label for="companyType"><input type="radio" name="companyType" id="companyType" value="r" class="radio"/> Recruitment firm</label>
+                            <label for="companyType2"><input type="radio" name="companyType" id="companyType2" value="e" class="radio"/> Employer</label>
+                            <label for="companyType3"><input type="radio" name="companyType" id="companyType3" value="a" class="radio"/> Ad agency</label>
+                        </td>
+                        <td>
+                            #springBind("employer.CompanyType")
+                            #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Company name</td>
+                        <td><input id="companyName" name="companyName" type="text" class="text" /></td>
+                        <td>
+                            #springBind("employer.CompanyName")
+                            #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Country</td>
+                        <td>
+                            <select name="country.id" id="currentCountry" class="shortened" >
+                                <option value="" selected>Please select</option>
+                                #foreach($country in $countryList)
+                                    #if($country.Id.equals($employer.country.Id))
+                                        <option value="$country.Id" selected>$country.Name</option>
+                                    #else
+                                        <option value="$country.Id">$country.Name</option>
+                                    #end
+                                #end
+                            </select>
+                        </td>
+                        <td>
+                            #springBind("employer.Country.Id")
+                            #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Telephone</td>
+                        <td><input id="yourTelephone" name="telephone" type="text" class="text" /></td>
+                        <td>
+                            #springBind("employer.Telephone")
+                            #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>How can we help</td>
+                        <td><textarea id="help"  name="help" rows="6" cols="51"></textarea></td>
+                        <td>
+                            #springBind("employer.Help")
+                            #springShowErrors("<br/>" "")
+                        </td>
+                    </tr>
+                </table>
+                <div >
+                    <input type="submit" tabindex="20"/>
+                    <input type="reset" tabindex="21"/>
+                </div>
+            </form>
+    </body>
+</html>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Advance Job Search</title>
+    </head>
+    <body>
+        <p>
+            Advance Search
+        </p>
+        <form name="profileform" action="search/advresult" method="post">
+            <table>
+                <tr>
+                    <td><em>All</em> of these words</td>
+                    <td><input name="keywordAll" id="keywordAll" class="text" type="text"  maxlength="500" value="" /></td>
+                </tr>
+                <tr>
+                    <td><em>Any</em> of these words</td>
+                    <td><input name="keywordAll" id="keywordAll" class="text" type="text"  maxlength="500" value="" /></td>
+                </tr>
+                <tr>
+                    <td>This of these words</td>
+                    <td><input name="keywordAll" id="keywordAll" class="text" type="text"  maxlength="500" value="" /></td>
+                </tr>
+                <tr>
+                    <td><em>None</em> of these words</td>
+                    <td><input name="keywordAll" id="keywordAll" class="text" type="text"  maxlength="500" value="" /></td>
+                </tr>
+            </table>
+            <h3>Sector</h3>
+            <table>
+                <tr>
+                    <td>Sector</td>
+                    <td>
+                        <select name="sector" id="sector" class="shortened multiSelectHeight">
+                            <option value="" selected>Please select</option>
+                            #foreach($workSector in $workSectorList)
+                                #if($workSector.Id.equals($employee.workSector.Id))
+                                    <option value="$workSector.Id" selected>$workSector.Name</option>
+                                #else
+                                    <option value="$workSector.Id">$workSector.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sub Sector</td>
+                    <td>
+                        <select multiple="multiple">
+                            <option value="All">All</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <h3>Location</h3>
+            <table>
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <select name="country.id" id="currentCountry" class="shortened" tabindex="11">
+                            <option value="" selected>Please select</option>
+                                #foreach($country in $countryList)
+                                    #if($country.Id.equals($employee.country.Id))
+                                        <option value="$country.Id" selected>$country.Name</option>
+                                    #else
+                                        <option value="$country.Id">$country.Name</option>
+                                    #end
+                                #end
+                        </select>
+                        <select name="city.id" id="city" class="shortened" tabindex="12">
+                            <option value="all">All</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <select name="positiontype" id="positiontype" class="shortened">
+                            <option value="0">No Preference</option>
+                            <option value="1" >Permanent</option>
+                            <option value="6" >Temporary</option>
+                            <option value="2" >Contract</option>
+                            <option value="8" >Self-Employed</option>
+                            <option value="4" >Internships & Graduate Trainee</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Work experience</td>
+                    <td>
+                        <select name="workExperience.id" id="workExperience" class="shortened" tabindex="9">
+                            <option value="">Please select</option>
+                            #foreach($workExperience in $workExperienceList)
+                                #if($workExperience.Id.equals($employee.workExperience.Id))
+                                    <option value="$workExperience.Id" selected>$workExperience.Name</option>
+                                #else
+                                    <option value="$workExperience.Id" >$workExperience.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Renumeration</td>
+                    <td>
+                        <select name="currency" class="shortened">
+                            <option value="0">No Preference</option>
+                            <option value="1">Sterling</option>
+                            <option value="2">USD</option>
+                            <option value="3">SGD</option>
+                            <option value="4">Euro</option>
+                        </select>
+                        <select name="salaryband" class="shortened">
+                            <option value="0">No Preference</option>
+                            <option value="1">0 - 40,000</option>
+                            <option value="2">40,000 - 80,0000</option>
+                            <option value="3">80,000 - 150,0000</option>
+                            <option value="4">150,000 - 250,0000</option>
+                            <option value="5">250,000 - 500,0000</option>
+                            <option value="6">500,000 plus</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Result Short By</td>
+                    <td>
+                        <label for="date">
+                            <input type="radio" name="sortType" class="radio" id="date" value="DATE" checked/>&nbsp;Posting date&nbsp;&nbsp;
+                        </label>
+                        <label for="relevance">
+                            <input type="radio" name="sortType"  class="radio" id="relevance" value="RELEVANCE"/>&nbsp;Relevance
+                        </label>
+                    </td>
+                </tr>
+            </table>
+            <div >
+                <input type="submit" tabindex="20"/>
+                <input type="reset" tabindex="21"/>
+            </div>
+        </form>
+    </body>
+</html>

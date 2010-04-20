@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+    <property name="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider</property>
+    <property name="hibernate.search.default.indexBase">/Users/ifnu/indexes</property>
+    <mapping class="com.sharobitech.resumeapp.model.Apply"/>
+    <mapping class="com.sharobitech.resumeapp.model.Employee"/>
+    <mapping class="com.sharobitech.resumeapp.model.Employer"/>
+    <mapping class="com.sharobitech.resumeapp.model.JobPosting"/>
+    <mapping class="com.sharobitech.resumeapp.model.Resume"/>
+    <mapping class="com.sharobitech.resumeapp.model.UserLoginHistory"/>
+    <mapping class="com.sharobitech.resumeapp.model.User"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.Category"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.Continent"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.City"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.Country"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.Currency"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.EducationLevel"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.JobPreference"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.JobRole"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.Language"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.LanguageFluency"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.Title"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.WorkExperience"/>
+    <mapping class="com.sharobitech.resumeapp.model.catalog.WorkSector"/>
+  </session-factory>
+</hibernate-configuration>

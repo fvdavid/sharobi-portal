@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>Finance Jobs: Accounting jobs, IT jobs & banking jobs - Singapore</title>
+        <meta name="description" content=" Finance jobs & recruitment: Accounting jobs, banking jobs & IT jobs in Singapore – browse jobs by sector & job location" />
+        <meta name="keywords" content=" finance jobs, financial job, IT jobs, bank jobs, accounting jobs, IT job, accounting job, bank job, accounting, banking job, IT, finance, financial, recruitment, finance recruitment, employment, financial recruitment, IT employment, accounting career, careers, recruiters" />
+    </head>
+    <body>
+        <!-- Level 0 Template Start -->
+        <form id="employeeRegistration" action="" method="post" >
+            <table>
+                <tr>
+                    <td>* Username</td>
+                    <td><input type="text" name="user.userName" id="username" maxlength="20" tabindex="1"/></td>
+                    <td>
+                      #springBind("employee.user.userName")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Password</td>
+                    <td><input type="password" name="user.password" id="password" tabindex="2" value="" maxlength="20"/></td>
+                    <td>
+                      #springBind("employee.user.password")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Confirm password</td>
+                    <td><input type="password" name="password2" id="password2" tabindex="3" value="" maxlength="20"/></td>
+                    <td>
+                      #springBind("employee.password2")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Email</td>
+                    <td><input type="text" name="user.email" id="user.email" tabindex="4" value="" class="text" maxlength="100"/></td>
+                    <td>
+                      #springBind("employee.user.email")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Confirm email</td>
+                    <td><input type="text" name="email2" id="email2" tabindex="5" value="" class="text" maxlength="100"/></td>
+                    <td>
+                      #springBind("employee.email2")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+            </table>
+            <h3>Personal details</h3>
+            <table>
+                <tr>
+                    <td>* Title</td>
+                    <td>
+                        <select name="title.id" id="title" class="shortened" tabindex="6">
+                            <option value="">Please select</option>
+                            #foreach($title in $titleList)
+                                <option value="$title.Id">$title.Name</option>
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("employee.title")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* First Name</td>
+                    <td><input type="text" name="firstName" tabindex="7" value="" class="text"/></td>
+                    <td>
+                      #springBind("employee.firstName")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Last Name</td>
+                    <td><input type="text" name="lastName" tabindex="8" value="" class="text"/></td>
+                    <td>
+                      #springBind("employee.lastName")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Work experience</td>
+                    <td>
+                        <select name="workExperience.id" id="workExperience" class="shortened" tabindex="9">
+                            <option value="">Please select</option>
+                            #foreach($workExperience in $workExperienceList)
+                                <option value="$workExperience.Id" >$workExperience.Name</option>
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("employee.workExperience.id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Current work sector</td>
+                    <td>
+                        <select name="workSector.id" id="currentSector" class="shortened" tabindex="10">
+                            <option value="" selected>Please select</option>
+                            #foreach($workSector in $workSectorList)
+                                <option value="$workSector.Id">$workSector.Name</option>
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("employee.workSector.id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Current country</td>
+                    <td>
+                        <select name="country.id" id="currentCountry" class="shortened" tabindex="11">
+                            <option value="" selected>Please select</option>
+                            #foreach($country in $countryList)
+                                <option value="$country.Id">$country.Name</option>
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("employee.country.id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Current city</td>
+                    <td>
+                        <select name="city.id" id="city" class="shortened" tabindex="12">
+                            <option value="">Please select</option>
+                            #foreach($city in $cityList)
+                                #if($city.Id.equals($employee.city.Id))
+                                    <option value="$city.Id" selected>$city.Name</option>
+                                #else
+                                    <option value="$city.Id">$city.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("employee.city.id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+            </table>
+            <h3>Email preferences</h3>
+            <table>
+                <tr>
+                    <td>* Receive Newsletter?</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="hiringNewsEmail_yes">
+                            <input name="newsLetter" id="newsLetter_yes" type="radio" tabindex="13" value="1" checked/>Yes
+                        </label>
+                        <label for="hiringNewsEmail_no">
+                            <input name="newsLetter" id="newsLetter_no" type="radio" tabindex="14" value="0"/>No
+                        </label>
+                    </td>
+                    <td>
+                      #springBind("employee.newsLetter")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Receive latest updates and highlights?</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="receiveEfcMessages_yes">
+                            <input name="lattestUpdate" id="lattestUpdate_yes" type="radio" tabindex="15" value="1" checked/>Yes
+                        </label>
+                        <label for="receiveEfcMessages_no">
+                            <input name="lattestUpdate" id="lattestUpdate_no" type="radio" tabindex="16" value="0"/>No
+                        </label>
+                    </td>
+                    <td>
+                      #springBind("employee.lattestUpdate")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Receive other relevant career related info and highlights from selected companies?</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="efcMktCode_yes">
+                            <input type="radio" name="careerInfo" id="careerInfo_yes" tabindex="17" value="1" checked/>Yes
+                        </label>
+                        <label for="efcMktCode_no">
+                            <input type="radio" name="careerInfo" id="careerInfo_no" tabindex="18" value="0"/>No
+                        </label>
+                    </td>
+                    <td>
+                      #springBind("employee.careerInfo")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+            </table>
+            <div class="keepSignedIn clearfix">
+                <input type="checkbox" name="keepSignedIn" id="keepSignedIn" tabindex="19" value="1" class="genericText" checked/>
+                <label for="keepSignedInReg">
+                    Keep me signed in on this computer unless I sign out
+                </label>
+            </div>
+            <div >
+                <input type="submit" tabindex="20"/>
+                <input type="reset" tabindex="21"/>
+            </div>
+        </form>
+    </body>
+</html>
