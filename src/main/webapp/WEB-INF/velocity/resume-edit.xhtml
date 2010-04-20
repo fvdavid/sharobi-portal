@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Register Resume</title>
+    </head>
+    <body>
+        <p>
+            Register Resume
+        </p>
+        <form id="register" action="/register/resume" enctype="multipart/data" method="post">
+            <table>
+                <tr>
+                    <td>* Title</td>
+                    <td>
+                        <select name="title.id" id="title" class="shortened" tabindex="6">
+                            <option value="">Please select</option>
+                            #foreach($title in $titleList)
+                                #if($title.Id.equals($resume.Title.Id))
+                                    <option value="$title.Id" selected>$title.Name</option>
+                                #else
+                                    <option value="$title.Id">$title.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("resume.title.id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>First name</td>
+                    <td><input name="firstName" id="firstname" class="text" type="text" tabindex="1" value="$!resume.FirstName" /></td>
+                    <td>
+                      #springBind("resume.firstName")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Surname</td>
+                    <td><input name="surName" id="surname" class="text" type="text" tabindex="1" value="$!resume.SurName" /></td>
+                    <td>
+                      #springBind("resume.surName")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input name="email" id="email" class="text" type="text" tabindex="1" value="$!resume.Email" /></td>
+                    <td>
+                      #springBind("resume.email")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <select name="country.id" id="currentCountry" class="shortened" tabindex="11">
+                            <option value="" selected>Please select</option>
+                                #foreach($country in $countryList)
+                                    #if($country.Id.equals($resume.country.Id))
+                                        <option value="$country.Id" selected>$country.Name</option>
+                                    #else
+                                        <option value="$country.Id">$country.Name</option>
+                                    #end
+                                #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("resume.country.id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip / post code</td>
+                    <td><input name="postcode" id="postcode" class="text shortened" type="text" value="$!resume.PostCode" tabindex="6" /></td>
+                    <td>
+                      #springBind("resume.postCode")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Telephone</td>
+                    <td><input name="phone" id="phone" class="text shortened" type="text" value="$!resume.Telephone" tabindex="7" /></td>
+                    <td>
+                      #springBind("resume.telephone")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Current work permit</td>
+                    <td>
+                        <select name="workPermit" size="10" multiple="yes">
+                        #foreach($country in $countryList)
+                            #if($resume.workPermit.indexOf($country.Name)>=0)
+                            <option value="$country.Name" selected>$country.Name</option>
+                            #else
+                            <option value="$country.Name">$country.Name</option>
+                            #end
+                        #end
+                        </select>
+                    </td>
+                </tr>
+                #set($true_literal="1")
+                #set($false_literal="0")
+                <tr>
+                    <td colspan="2">
+                        #if($false_literal.equals($resume.DisplayResume))
+                        <input type="checkbox" name="displayResume" id="isAnonymous" value="0" checked />
+                        #else
+                        <input type="checkbox" name="displayResume" id="isAnonymous" value="0" />
+                        #end
+			<label for="isAnonymous">Do NOT display my contact details with my resume. I want to remain anonymous.</label>
+                    </td>
+                    <td>
+                      #springBind("resume.displayResume")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+            </table>
+            <h3>Attach resume</h3>
+            <table>
+                <tr>
+                    <td>Your resume file</td>
+                    <td><input name="resumeFile" id="resumeFile" type="file" class="upload" /></td>
+                </tr>
+            </table>
+            <h3>Resume Summary</h3>
+            <table>
+                <tr>
+                    <td>Resume Title</td>
+                    <td>
+                        <textarea cols="50" rows="10" name="resumeSummary_title" id="resumeSummary_title">$!resume.ResumeTitle</textarea>
+                    </td>
+                    <td>
+                      #springBind("resume.resumeTitle")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Current work sector</td>
+                    <td>
+                        <select name="workSector.id" id="currentSector" class="shortened" tabindex="10">
+                            <option value="" selected>Please select</option>
+                            #foreach($workSector in $workSectorList)
+                                #if($workSector.Id.equals($resume.workSector.Id))
+                                    <option value="$workSector.Id" selected>$workSector.Name</option>
+                                #else
+                                    <option value="$workSector.Id">$workSector.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("resume.WorkSector.Id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Current Role</td>
+                    <td>
+                        <select name="jobRole.id">
+                            <option value="">Please Select</option>
+                            #foreach($jobRole in $jobRoleList)
+                                #if($jobRole.Id.equals($resume.JobRole.Id))
+                                <option value="$jobRole.Id" selected>$jobRole.Name</option>
+                                #else
+                                <option value="$jobRole.Id">$jobRole.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Work experience</td>
+                    <td>
+                        <select name="workExperience.id" id="workExperience" class="shortened" tabindex="9">
+                            <option value="">Please select</option>
+                            #foreach($workExperience in $workExperienceList)
+                                #if($workExperience.Id.equals($resume.workExperience.Id))
+                                    <option value="$workExperience.Id" selected>$workExperience.Name</option>
+                                #else
+                                    <option value="$workExperience.Id" >$workExperience.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("resume.WorkExperience.Id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Education level</td>
+                    <td>
+                        <select name="educationLevel.id">
+                            <option value="">Please Select</option>
+                            #foreach($educationLevel in $educationLevelList)
+                                #if($educationLevel.Id.equals($resume.EducationLevel.Id))
+                                <option value="$educationLevel.Id" selected>$educationLevel.Name</option>
+                                #else
+                                <option value="$educationLevel.Id" >$educationLevel.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("resume.EducationLevel.Id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Language Spoken</td>
+                    <td>
+                        <select name="language.id">
+                            <option value="">Please Select</option>
+                            #foreach($language in $languageList)
+                                #if($language.Id.equals($resume.Language.Id))
+                                    <option value="$language.Id" selected>$language.Name</option>
+                                #else
+                                    <option value="$language.Id">$language.Name</option>
+                                #end
+                            #end
+                        </select>
+                        <select name="languageFluency.id" id="resumeSummary_fluency1" class="shortened">
+                            <option value="">Please Select</option>
+                            #foreach($languageFluency in $languageFluencyList)
+                                #if($languageFluency.Id.equals($resume.LanguageFluency.Id))
+                                    <option value="$languageFluency.Id" selected>$languageFluency.Name</option>
+                                #else
+                                    <option value="$languageFluency.Id">$languageFluency.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("resume.Language.Id")
+                      #springShowErrors("<br/>" "")
+                      #springBind("resume.LanguageFluency.Id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Add More Language Spoken</td>
+                    <td>
+                        <select name="otherLanguage.id">
+                            <option value="">Please Select</option>
+                            #foreach($language in $languageList)
+                                #if($language.Id.equals($resume.OtherLanguage.Id))
+                                <option value="$language.Id" selected>$language.Name</option>
+                                #else
+                                <option value="$language.Id">$language.Name</option>
+                                #end
+                            #end
+                        </select>
+                        <select name="otherLanguageFluency.id" id="resumeSummary_fluency1" class="shortened">
+                            <option value="">Please Select</option>
+                            #foreach($languageFluency in $languageFluencyList)
+                                #if($languageFluency.Id.equals($resume.OtherLanguageFluency.Id))
+                                <option value="$languageFluency.Id" selected>$languageFluency.Name</option>
+                                #else
+                                <option value="$languageFluency.Id">$languageFluency.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <h3>Job Preference</h3>
+            <table>
+                <tr>
+                    <td>Are you willing to  relocate?</td>
+                    <td>
+                        <label for="relocateYes">
+                            #if($true_literal.equals($resume.WillingRelocate))
+                            <input type="radio" name="willingRelocate" id="relocateYes" value="1" class="radio" checked/>
+                            #else
+                            <input type="radio" name="willingRelocate" id="relocateYes" value="1" class="radio" />
+                            #end
+                                Yes
+                        </label>
+                        <label for="relocateNo">
+                            #if($false_literal.equals($resume.WillingRelocate))
+                            <input type="radio" name="willingRelocate" id="relocateNo" value="0" class="radio" checked/>
+                            #else
+                            <input type="radio" name="willingRelocate" id="relocateNo" value="0" class="radio" />
+                            #end
+                                No
+                        </label>
+                    </td>
+                    <td>
+                      #springBind("resume.willingRelocate")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Desired Location</td>
+                    <td>
+                        <select name="location.id" id="currentCountry" class="shortened" tabindex="11">
+                            <option value="" selected>Please select</option>
+                            #foreach($country in $countryList)
+                                #if($country.Id.equals($resume.location.Id))
+                                    <option value="$country.Id" selected>$country.Name</option>
+                                #else
+                                    <option value="$country.Id">$country.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Position Type</td>
+                    <td>
+                        <select name="jobPreference.id" id="jobPreferences_employmentType" class="shortened">
+                            <option value="">Please select</option>
+                            #foreach($jobPreference in $jobPreferenceList))
+                                #if($jobPreference.Id.equals($resume.JobPreference.Id))
+                                <option value="$jobPreference.Id" selected>$jobPreference.Name</option>
+                                #else
+                                <option value="$jobPreference.Id">$jobPreference.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("resume.jobPreference.id")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                #set($fullTime = "full time")
+                #set($partTime = "part time")
+                <tr>
+                    <td>Employment Type</td>
+                    <td>
+                        <select name="employmentType" id="jobPreferences_employmentType" class="shortened">
+                            <option value="">Please select</option>
+                            #if($fullTime.equals($resume.EmployementType))
+                            <option value="full time" selected>Full Time</option>
+                            <option value="part time">Part Time</option>
+                            #else
+                            <option value="full time">Full Time</option>
+                            <option value="part time" selected>Part Time</option>
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                      #springBind("resume.employmentType")
+                      #springShowErrors("<br/>" "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Minumum renumeration</td>
+                    <td><input type="text" name="minimumRenumeration" value="$!resume.MinimumRenumeration"/>
+                        <select name="currency.id">
+                            <option value="">Please select</option>
+                               #foreach($currency in $currencyList)
+                                    #if($currency.Id.equals($resume.Currency.Id))
+                                    <option value="$currency.Id" selected>$currency.Name</option>
+                                    #else
+                                    <option value="$currency.Id">$currency.Name</option>
+                                    #end
+                                #end
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Desired Travel</td>
+                    <td>
+                        <select name="desiredTravel">
+                            #if($resume.DesiredTravel.equals(25))
+                            <option value="0">None</option>
+                            <option value="25" selected>25%</option>
+                            <option value="50">50%</option>
+                            <option value="75">75%</option>
+                            #elseif($resume.DesiredTravel.equals(50))
+                            <option value="0">None</option>
+                            <option value="25">25%</option>
+                            <option value="50" selected>50%</option>
+                            <option value="75">75%</option>
+                            #elseif($resume.DesiredTravel.equals(75))
+                            <option value="0">None</option>
+                            <option value="25">25%</option>
+                            <option value="50">50%</option>
+                            <option value="75" selected>75%</option>
+                            #else
+                            <option value="0" selected>None</option>
+                            <option value="25">25%</option>
+                            <option value="50">50%</option>
+                            <option value="75">75%</option>
+                            #end
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <h3>Visibility Preference</h3>
+            <table>
+                <tr>
+                    <td>Makes this resume searchable?</td>
+                    <td>
+                        <label for="searchableYes">
+                            #if($true_literal.equals($resume.Searchable))
+                            <input type="radio" name="searchable" id="searchableYes" value="1" class="radio" checked/>
+                            #else
+                            <input type="radio" name="searchable" id="searchableYes" value="1" class="radio" />
+                            #end
+                                Yes
+                        </label>
+                        <label for="searchableNo">
+                            #if($false_literal.equals($resume.Searchable))
+                            <input type="radio" name="searchable" id="searchableNo" value="0" class="radio" checked />
+                            #else
+                            <input type="radio" name="searchable" id="searchableNo" value="0" class="radio"  />
+                            #end
+                                No
+                        </label>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <input type="submit" value="preview"/>
+            </div>
+        </form>
+    </body>
+</html>

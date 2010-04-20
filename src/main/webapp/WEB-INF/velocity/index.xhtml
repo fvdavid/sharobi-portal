@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Financial Job Search</title>
+    </head>
+    <body>
+        <p>
+            Welcome to sharobi job search
+        </p>
+        <table>
+            <tr>
+                <td><a href="rlogin">recruiter login</a></td>
+                <td><a href="register/employer">recruiter register</a></td>
+            </tr>
+            <tr>
+                <td><a href="login">employee login</a></td>
+                <td><a href="register/employee">employee register</a></td>
+            </tr>
+        </table>
+        <form id="search" action="search/result" method="post">
+            <table>
+                <tr>
+                    <td>Job Search</td>
+                    <td><input type="text" name="keyword"/></td>
+                    <td>
+                        <select name="country">
+                            <option value="" selected>Please select</option>
+                            #foreach($country in $countryList)
+                                #if($country.Id.equals($employee.country.Id))
+                                    <option value="$country.Id" selected>$country.Name</option>
+                                #else
+                                    <option value="$country.Id">$country.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                    <td>
+                        <select name="workSector" id="currentSector" class="shortened" tabindex="10">
+                            <option value="" selected>Please select</option>
+                            #foreach($workSector in $workSectorList)
+                                #if($workSector.Id.equals($employee.workSector.Id))
+                                    <option value="$workSector.Id" selected>$workSector.Name</option>
+                                #else
+                                    <option value="$workSector.Id">$workSector.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                    <td><input type="submit" value="search"/> </td>
+                    <td><a href="search/advance">advance</a></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

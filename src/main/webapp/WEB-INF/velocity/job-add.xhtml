@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Job Posting</title>
+    </head>
+    <body>
+        <p>
+            Job Posting
+        </p>
+        <form>
+            <table>
+                <tr>
+                    <td>Job Title</td>
+                    <td>
+                        <input name="jobTitle" type="text"/>
+                        at
+                        <input type="text" name="jobAt"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td><input type="text" name="location"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <select name="country">
+                            <option value="" selected>Please select</option>
+                            #foreach($country in $countryList)
+                                #if($country.Id.equals($employee.country.Id))
+                                    <option value="$country.Id" selected>$country.Name</option>
+                                #else
+                                    <option value="$country.Id">$country.Name</option>
+                                #end
+                            #end
+                        </select>
+                        <input type="text" name="postCode" value="Enter post"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Company URL:</td>
+                    <td><input type="text" name="companyUrl"/></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>Type</td>
+                    <td>
+                        <select name="jobPreferences_employmentType" id="jobPreferences_employmentType" class="shortened">
+                            <option value="0" selected="selected">Please select</option>
+                            <option value="1" >Full time</option>
+                            <option value="2" >Part time</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Work experience</td>
+                    <td>
+                        <select name="workExperience.id" id="workExperience" class="shortened" tabindex="9">
+                            <option value="">Please select</option>
+                            #foreach($workExperience in $workExperienceList)
+                                #if($workExperience.Id.equals($employee.workExperience.Id))
+                                    <option value="$workExperience.Id" selected>$workExperience.Name</option>
+                                #else
+                                    <option value="$workExperience.Id" >$workExperience.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>* Current work sector</td>
+                    <td>
+                        <select name="workSector.id" id="currentSector" class="shortened" tabindex="10">
+                            <option value="" selected>Please select</option>
+                            #foreach($workSector in $workSectorList)
+                                #if($workSector.Id.equals($employee.workSector.Id))
+                                    <option value="$workSector.Id" selected>$workSector.Name</option>
+                                #else
+                                    <option value="$workSector.Id">$workSector.Name</option>
+                                #end
+                            #end
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Employer Job Id</td>
+                    <td><input type="text" name="jobId"/></td>
+                </tr>
+                <tr>
+                    <td>Minumum renumeration</td>
+                    <td><input type="text" name="renumeration"/></td>
+                    <td>
+                        <select name="renumerationCurrency">
+                            <option value="1">SGD</option>
+                            <option value="1">USD</option>
+                            <option value="1">MYR</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Job Description</td>
+                    <td>
+                        <textarea cols="80" rows="10" name="jobDescription"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>skils</td>
+                    <td>
+                        <textarea cols="80" rows="6" name="skils"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Company Description</td>
+                    <td>
+                        <textarea cols="80" rows="10" name="companyDescription"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <h3>Additional Information</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="efcMktCode_yes">
+                            <input type="checkbox" name="relocation" tabindex="17" value="1"/>Local candidates only, no relocation
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="efcMktCode_yes">
+                            <input type="checkbox" name="agencies" tabindex="17" value="1"/>Third party applications from staffing agencies not accepted
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

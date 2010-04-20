@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>View Employee Data</title>
+    </head>
+    <body>
+        <p>
+            Employee data $employee.Title.Name $employee.FirstName $employee.LastName
+        </p>
+        <table>
+            <tr>
+                <td>User Name</td>
+                <td>$employee.User.UserName</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>$employee.User.Email</td>
+            </tr>
+            <tr>
+                <td>Work Experience</td>
+                <td>$employee.WorkExperience.Name</td>
+            </tr>
+            <tr>
+                <td>Work Sector</td>
+                <td>$employee.WorkSector.Name</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>$employee.Country.Name</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>$!employee.City.Name</td>
+            </tr>
+            #set($true_literal="1")
+            <tr>
+                <td>Recieve News Letter</td>
+                <td>
+                    #if($employee.NewsLetter.equals($true_literal))
+                    Yes
+                    #else
+                    No
+                    #end
+                </td>
+            </tr>
+            <tr>
+                <td>Recieve Newsletter</td>
+                <td>
+                    #if($employee.NewsLetter.equals($true_literal))
+                    Yes
+                    #else
+                    No
+                    #end
+                </td>
+            </tr>
+            <tr>
+                <td>Receive latest updates and highlights?</td>
+                <td>
+                    #if($employee.LattestUpdate.equals($true_literal))
+                    Yes
+                    #else
+                    No
+                    #end
+                </td>
+            </tr>
+            <tr>
+                <td>Receive other relevant career related info and highlights from selected companies?</td>
+                <td>
+                    #if($employee.CareerInfo.equals($true_literal))
+                    Yes
+                    #else
+                    No
+                    #end
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
