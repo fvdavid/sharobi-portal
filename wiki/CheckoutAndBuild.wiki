@@ -10,8 +10,10 @@ http://code.google.com/p/sharobi-portal/source/checkout
 
 3. Install mysql and create database sharobi
 
-{{{mysql> create database sharobi;
-mysql> grant all on sharobi.* to sharobi identified by 'sharobi'}}}
+{{{
+mysql> create database sharobi;
+mysql> grant all on sharobi.* to sharobi identified by 'sharobi'
+}}}
 
 4. build source code
 
