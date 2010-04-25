@@ -14,7 +14,7 @@ http://code.google.com/p/sharobi-portal/source/checkout
 
 {{{
 mysql> create database sharobi;
-mysql> grant all on sharobi.* to sharobi identified by 'sharobi'
+mysql> grant all on sharobi.* to sharobi@localhost identified by 'sharobi'
 }}}
 
 4. build source code
