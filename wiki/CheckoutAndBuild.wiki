@@ -18,9 +18,9 @@ mysql> create database sharobi;
 mysql> grant all on sharobi.* to sharobi@localhost identified by 'sharobi'
 }}}
 
-4. edit hibernate.cfg
+4. edit  src/main/resources/hibernate.cfg.xml 
 
-you need to change hibernate.cfg configuration, and point hibernate-search index to apropriate folder 
+you need to change hibernate.cfg.xml configuration, and point hibernate-search index to apropriate folder 
 
 {{{<property name="hibernate.search.default.indexBase">/Users/ifnu/indexes</property>}}}
 
