@@ -22,7 +22,7 @@ mysql> grant all on sharobi.* to sharobi@localhost identified by 'sharobi'
 
 you need to change hibernate.cfg configuration, and point hibernate-search index to apropriate folder 
 
-<property name="hibernate.search.default.indexBase">/Users/ifnu/indexes</property>
+{{{<property name="hibernate.search.default.indexBase">/Users/ifnu/indexes</property>}}}
 
 above configuration point index folder to /Users/ifnu/indexes change the folder to your folder, dont forget to make sure that the folder you put in this configuration already exist.
 
